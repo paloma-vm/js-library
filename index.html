@@ -54,8 +54,10 @@
         </form>
     </div>
     <!-- Scripts -->
-    <script src="recipe-api.js"></script>
-    <script>
+    <script src="recipe-api.js" type="module"></script>
+    <script type="module">
+        import { getRecipes } from './recipe-api.js'
+
         const form = document.getElementById('form')
         const inputQuery = document.getElementById('input-query')
         const recipeDisplay = document.getElementById('recipe-display')
@@ -68,9 +70,9 @@
             const APP_ID = "529fd93d"
             const APP_KEY = "6a6e228833bcb65066cc7b50c75d7020"
 
-            getRecipes(searchInput, APP_ID, APP_KEY).then((json) => {
-                // console.log(json)
-                recipeDisplay.innerHTML = json.hits
+            getRecipes(searchInput, APP_ID, APP_KEY).then((data) => {
+                console.log(data)
+                recipeDisplay.innerHTML = data.name
             }).catch((err) => {
                 console.log(err.message)
             })
