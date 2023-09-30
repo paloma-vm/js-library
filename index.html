@@ -43,7 +43,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="recipe-display">Recipe appears here</h1>
+        <h1 id="recipe-display">Recipe info appears here</h1>
         <form id="form">
             <input 
                 id="input-query"
@@ -67,14 +67,34 @@
             e.preventDefault()
             const searchInput = inputQuery.value
 
-            const AppId = "529fd93d"
-            const AppKey = "6a6e228833bcb65066cc7b50c75d7020"
+            const appId = "529fd93d"
+            const appKey = "1ead49b1354b634f4edc9e5ecb3f9b99"
 
-            getRecipes(searchInput, APP_ID, APP_KEY).then((data) => {
-                console.log(data)
-                recipeDisplay.innerHTML = data.name
-            }).catch((err) => {
-                console.log(err.message)
+            getRecipes(searchInput, appId, appKey)
+                .then((data) => {
+                    console.log(data)
+                    if (data.length > 0) {
+                        // clear anything in h1
+                        recipeDisplay.innerHTML = ''
+
+                        // loop through results and create links
+                        data.forEach((recipe) => {
+                            const recipeLink = document.createElement('a')
+                            recipeLink.textContent = recipe.name
+                            recipeLink.href = recipe.link
+                            recipeLink.target = '_blank' // opens link in new tab
+                            recipeLink.style.display = 'block' // display each link on a new line
+                            recipeDisplay.appendChild(recipeLink)
+                        })
+
+                    } else {
+                        // if no recipes are found
+                        recipeDisplay.textContent = "No recipes were found."
+                    }
+
+                    // recipeDisplay.innerHTML = data.name
+                }).catch((err) => {
+                    console.log(err.message)
             })
         })
 
