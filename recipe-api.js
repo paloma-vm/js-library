@@ -16,12 +16,15 @@ async function getRecipesByQty(searchInput, appId, appKey, Qty) {
 //     const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}`
 // }
 
-// async function getRecipesByMealType(searchInput, appId, appKey, limit = 3, mealType) {
-//     const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}&mealType=${mealType}`
-//     return getRecipes(path)
-// }
+async function getRecipesByMealType(searchInput, appId, appKey, mealType) {
+    if (mealType !== 'breakfast' && mealType !== 'lunch' && mealType !== 'dinner' && mealType !== 'snack' && mealType !== 'teatime') {
+        throw new Error('Please enter a valid meal type. Choose from breakfast, lunch, dinner, snack, or teatime.')
+    }
+    const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}&mealType=${mealType}`
+    return getRecipesByQuery(path)
+}
 
-async function getBreakfastRecipes(searchInput, appId, appKey, limit = 3) {
+async function getBreakfastRecipes(searchInput, appId, appKey) {
     const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}&mealType=Breakfast`
     return getRecipesByQuery(path)
 }
@@ -34,7 +37,7 @@ async function getRecipesByQuery(path, limit = 3) {
         const res = await fetch(path)
         const json = await res.json()
         
-        const recipes = json.hits.slice(0, limit).map(hit => { // slice limits the number of recipes returned
+        const recipes = json.hits.slice(0, limit).map(hit => { // slice limits the number of recipes returned, default for Edamam is 20
             const recipeInfo = {
                 name: hit.recipe.label,
                 link: hit.recipe.url
@@ -50,5 +53,6 @@ async function getRecipesByQuery(path, limit = 3) {
 
 export {
     getRecipes,
-    getRecipesByQty
+    getRecipesByQty, 
+    getRecipesByMealType
 }
