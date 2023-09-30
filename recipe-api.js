@@ -11,10 +11,10 @@ async function getRecipesByQty(searchInput, appId, appKey, Qty) {
     return getRecipesByQuery(path, limit)
 }
 
-// async function getRecipesByTime(searchInput, appId, appKey, limit = 3) {         
-//     // v2
-//     const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}`
-// }
+async function getRecipesByMaxTime(searchInput, appId, appKey, maxTime) {         
+    const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}&time=${maxTime}`
+    return getRecipesByQuery(path)
+}
 
 async function getRecipesByMealType(searchInput, appId, appKey, mealType) {
     if (mealType !== 'breakfast' && mealType !== 'lunch' && mealType !== 'dinner' && mealType !== 'snack' && mealType !== 'teatime') {
@@ -54,5 +54,6 @@ async function getRecipesByQuery(path, limit = 3) {
 export {
     getRecipes,
     getRecipesByQty, 
-    getRecipesByMealType
+    getRecipesByMealType,
+    getRecipesByMaxTime
 }

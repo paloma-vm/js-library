@@ -56,7 +56,7 @@
     <!-- Scripts -->
     <script src="recipe-api.js" type="module"></script>
     <script type="module">
-        import { getRecipes, getRecipesByQty, getRecipesByMealType } from './recipe-api.js'
+        import { getRecipes, getRecipesByQty, getRecipesByMealType, getRecipesByMaxTime } from './recipe-api.js'
 
         const form = document.getElementById('form')
         const inputQuery = document.getElementById('input-query')
@@ -71,9 +71,11 @@
             
             // const Qty = 5 
             const mealType = 'lunch'
+            const maxTime = 15
             // getRecipes(searchInput, appId, appKey)
             // getRecipesByQty(searchInput, appId, appKey, Qty)
-            getRecipesByMealType(searchInput, appId, appKey, mealType)
+            // getRecipesByMealType(searchInput, appId, appKey, mealType)
+            getRecipesByMaxTime(searchInput, appId, appKey, maxTime)
                 .then((data) => {
                     console.log(data)
                     if (data.length > 0) {
