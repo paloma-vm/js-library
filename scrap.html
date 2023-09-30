@@ -56,7 +56,7 @@
     <!-- Scripts -->
     <script src="recipe-api.js" type="module"></script>
     <script type="module">
-        import { getRecipes, getRecipesByQty } from './recipe-api.js'
+        import { getRecipes } from './recipe-api.js'
 
         const form = document.getElementById('form')
         const inputQuery = document.getElementById('input-query')
@@ -69,9 +69,9 @@
             const appId = "529fd93d"
             const appKey = "1ead49b1354b634f4edc9e5ecb3f9b99"
             
-            const Qty = 5
-            // getRecipes(searchInput, appId, appKey)
-            getRecipesByQty(searchInput, appId, appKey, Qty)
+            // const limit = 3
+
+            getRecipes(searchInput, appId, appKey)
                 .then((data) => {
                     console.log(data)
                     if (data.length > 0) {
