@@ -5,7 +5,7 @@ async function getRecipesByQuery(path, limit = 3) {
     const res = await fetch(path);
     const json = await res.json();
 
-    // slice limits recipes Edamam default 20
+    // slice limits the number of recipes, Edamam default is 20
     const recipes = json.hits.slice(0, limit).map((hit) => {
       const recipeInfo = {
         name: hit.recipe.label,
