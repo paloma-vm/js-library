@@ -34,9 +34,9 @@ async function getRecipes(searchInput: string, appId: string, appKey: string) {
   return getRecipesByQuery(path);
 }
 
-async function getRecipesByQty(searchInput: string, appId: string, appKey: string, Qty: number) {
+async function getRecipesByQty(searchInput: string, appId: string, appKey: string, qty: number) {
   const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}`;
-  const limit = Qty;
+  const limit = qty;
   return getRecipesByQuery(path, limit);
 }
 

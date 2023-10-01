@@ -66,14 +66,14 @@
             e.preventDefault()
             const searchInput = inputQuery.value
 
-            const appId = "529fd93d"
-            const appKey = "1ead49b1354b634f4edc9e5ecb3f9b99"
+            const appId = process.env.APP_ID
+            const appKey = process.env.APP_KEY
             
-            // const Qty = 5 
+            // const qty = 5 
             const mealType = 'lunch'
             const maxTime = 15
             getRecipes(searchInput, appId, appKey)
-            // getRecipesByQty(searchInput, appId, appKey, Qty)
+            // getRecipesByqty(searchInput, appId, appKey, qty)
             // getRecipesByMealType(searchInput, appId, appKey, mealType)
             // getRecipesByMaxTime(searchInput, appId, appKey, maxTime)
                 .then((data) => {

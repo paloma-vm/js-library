@@ -1,4 +1,5 @@
 "use strict";
+// Functions
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getBreakfastRecipes = exports.getRecipesByMaxTime = exports.getRecipesByMealType = exports.getRecipesByQty = exports.getRecipes = void 0;
+// BASE FUNCTION
 function getRecipesByQuery(path, limit) {
     if (limit === void 0) { limit = 3; }
     return __awaiter(this, void 0, void 0, function () {
@@ -78,12 +80,12 @@ function getRecipes(searchInput, appId, appKey) {
     });
 }
 exports.getRecipes = getRecipes;
-function getRecipesByQty(searchInput, appId, appKey, Qty) {
+function getRecipesByQty(searchInput, appId, appKey, qty) {
     return __awaiter(this, void 0, void 0, function () {
         var path, limit;
         return __generator(this, function (_a) {
             path = "https://api.edamam.com/api/recipes/v2?type=public&q=".concat(searchInput, "&app_id=").concat(appId, "&app_key=").concat(appKey);
-            limit = Qty;
+            limit = qty;
             return [2 /*return*/, getRecipesByQuery(path, limit)];
         });
     });
