@@ -58,10 +58,10 @@ async function getBreakfastRecipes(searchInput: string, appId: string, appKey: s
   return getRecipesByQuery(path);
 }
 
-export {
-  getRecipes,
-  getRecipesByQty,
-  getRecipesByMealType,
-  getRecipesByMaxTime,
-  getBreakfastRecipes,
-};
+// export modules
+  module.exports.getRecipes = getRecipes;
+  module.exports.getRecipesByQty = getRecipesByQty;
+  module.exports.getRecipesByMealType = getRecipesByMealType;
+  module.exports.getRecipesByMaxTime = getRecipesByMaxTime;
+  module.exports.getBreakfastRecipes = getBreakfastRecipes;
+
