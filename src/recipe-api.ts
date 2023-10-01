@@ -1,12 +1,12 @@
 // Functions
-// BASE FUNCTION
+
 interface RecipeHit {
   recipe: {
     label: string;
     url: string;
   };
 }
-
+// BASE FUNCTION
 async function getRecipesByQuery(path: string, limit: number = 3) {
   try {
     const res = await fetch(path);
