@@ -105,18 +105,5 @@ function getRecipesByMealType(searchInput, appId, appKey, mealType) {
         });
     });
 }
-function getBreakfastRecipes(searchInput, appId, appKey) {
-    return __awaiter(this, void 0, void 0, function () {
-        var path;
-        return __generator(this, function (_a) {
-            path = "https://api.edamam.com/api/recipes/v2?type=public&q=".concat(searchInput, "&app_id=").concat(appId, "&app_key=").concat(appKey, "&mealType=Breakfast");
-            return [2 /*return*/, getRecipesByQuery(path)];
-        });
-    });
-}
 // export modules
-module.exports.getRecipes = getRecipes;
-module.exports.getRecipesByQty = getRecipesByQty;
-module.exports.getRecipesByMealType = getRecipesByMealType;
-module.exports.getRecipesByMaxTime = getRecipesByMaxTime;
-module.exports.getBreakfastRecipes = getBreakfastRecipes;
+export { getRecipes, getRecipesByQty, getRecipesByMaxTime, getRecipesByMealType, };

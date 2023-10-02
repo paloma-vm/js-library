@@ -53,15 +53,10 @@ async function getRecipesByMealType(searchInput: string, appId: string, appKey: 
   return getRecipesByQuery(path);
 }
 
-async function getBreakfastRecipes(searchInput: string, appId: string, appKey: string) {
-  const path = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${appId}&app_key=${appKey}&mealType=Breakfast`;
-  return getRecipesByQuery(path);
-}
-
 // export modules
-  module.exports.getRecipes = getRecipes;
-  module.exports.getRecipesByQty = getRecipesByQty;
-  module.exports.getRecipesByMealType = getRecipesByMealType;
-  module.exports.getRecipesByMaxTime = getRecipesByMaxTime;
-  module.exports.getBreakfastRecipes = getBreakfastRecipes;
-
+export {
+  getRecipes,
+  getRecipesByQty,
+  getRecipesByMaxTime,
+  getRecipesByMealType,
+}

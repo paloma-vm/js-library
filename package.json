@@ -1,12 +1,18 @@
-{ "scripts": {
+{
+  "name": "js-library",
+  "version": "1.0.0",
+  "description": "recipe API",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
     "test": "jest"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.50.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.28.1"
-  },
-  "dependencies": {
-    "jest": "^29.7.0"
+    "@types/node": "^20.8.2"
   }
 }
